@@ -11,11 +11,16 @@
         android:clickable="true"/>
 
     <include
+        android:id="@+id/main_search_tab_include"
         layout="@layout/layout_search_tab"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="6.2dp"
+        android:layout_marginLeft="6.2dp"
+        android:layout_marginRight="6.2dp"
+        android:layout_marginEnd="6.2dp"
         />
 
     <LinearLayout
@@ -24,17 +29,65 @@
         android:layout_height="65dp"
         android:layout_alignParentBottom="true"
         android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
+        android:paddingRight="8dp"
+        android:paddingEnd="8dp"
         android:paddingTop="0dp"
         >
 
         <include
             layout="@layout/layout_main_tab"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:layout_below="@+id/main_search_tab_include">
+        <ImageView
+            android:id="@+id/main_road_condition_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/main_icon_roadcondition_off"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/press_general_bg_shadow_selector"/>
+
+        <ImageView
+            android:id="@+id/main_maplayers_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/main_icon_maplayers"
+            android:background="@drawable/press_general_bg_shadow_selector"/>
+
+        <ImageView
+            android:id="@+id/main_street_scape_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="8dp"
+            android:src="@drawable/main_map_icon_streetscape"
+            android:background="@drawable/press_general_bg_shadow_selector"/>
+    </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/main_usercar"
+        android:id="@+id/main_user_car"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_above="@+id/main_loc_rl"
@@ -86,8 +139,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="0dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="vertical"
         >
 

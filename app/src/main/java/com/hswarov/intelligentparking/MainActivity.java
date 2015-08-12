@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 import android.widget.ZoomControls;
 
 import com.baidu.location.BDLocation;
@@ -15,6 +16,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -35,6 +37,7 @@ public class MainActivity extends BaseActivity {
 
     MapView mMapView;
     BaiduMap mBaiduMap;
+    private float currentZoomLevel;//当前缩放比例
 
     // UI相关
     RadioGroup.OnCheckedChangeListener radioButtonListener;
@@ -77,10 +80,10 @@ public class MainActivity extends BaseActivity {
         llMine = (LinearLayout) findViewById(R.id.main_tab_mine_ll);
         ivVoiceButton = (ImageView) findViewById(R.id.layout_search_tab_voice);
         rlLoc = (RelativeLayout) findViewById(R.id.main_loc_rl);
-        rlUsercar = (RelativeLayout) findViewById(R.id.main_usercar);
+        rlUsercar = (RelativeLayout) findViewById(R.id.main_user_car);
         ivInButton = (ImageView) findViewById(R.id.main_zoom_in);
         ivOutButton = (ImageView) findViewById(R.id.main_zoom_out);
-        ivLoctionButton= (ImageView) findViewById(R.id.main_loc_iv);
+        ivLoctionButton = (ImageView) findViewById(R.id.main_loc_iv);
     }
 
     private void initListener() {
@@ -137,19 +140,35 @@ public class MainActivity extends BaseActivity {
         ivOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+
+                if (currentZoomLevel > 4) {
+                    mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomOut());
+                    ivOutButton.setEnabled(true);
+                } else {
+                    ivOutButton.setEnabled(false);
+                    Toast.makeText(getApplicationContext(), "已缩至最小！", Toast.LENGTH_SHORT).show();
+                }
                 L.i("ivOutButton点击");
             }
         });
         ivInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+                if (currentZoomLevel <= 18) {
+                    MapStatusUpdateFactory.zoomIn();
+                    mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomIn());
+                    ivInButton.setEnabled(true);
+                } else {
+                    Toast.makeText(getApplicationContext(), "已放至最大！", Toast.LENGTH_SHORT).show();
+                }
                 L.i("ivInButton点击");
             }
         });
     }
 
+    /*
+    改变定位模式：跟随、普通、罗盘
+     */
     private void loctionModeChange() {
         View.OnClickListener btnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
@@ -164,7 +183,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case COMPASS:
                         ivLoctionButton.setImageResource(R.drawable.main_icon_location);
-                       // requestLocButton.setText("普通");
+                        // requestLocButton.setText("普通");
                         mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
                         mBaiduMap
                                 .setMyLocationConfigeration(new MyLocationConfiguration(
@@ -172,7 +191,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case FOLLOWING:
                         ivLoctionButton.setImageResource(R.drawable.main_icon_compass);
-                       // requestLocButton.setText("罗盘");
+                        // requestLocButton.setText("罗盘");
                         mCurrentMode = MyLocationConfiguration.LocationMode.COMPASS;
                         mBaiduMap
                                 .setMyLocationConfigeration(new MyLocationConfiguration(
@@ -197,6 +216,53 @@ public class MainActivity extends BaseActivity {
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);//设置缩放级别
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapStatus(msu);
+        currentZoomLevel = mBaiduMap.getMapStatus().zoom; //当前缩放比例
+            /*
+            让用户手势缩放和按钮缩放可以同步
+            并解决有时候地图放的过大而无法手势缩小的问题。
+            上上述用数字表示的最大最小缩放等级，改用BaiduMap的对象来获取最大最小值，
+            如果超过了就将最大最小值赋给当前值
+             */
+        BaiduMap.OnMapStatusChangeListener mapStatusChangeListener = new BaiduMap.OnMapStatusChangeListener() {
+            @Override
+            public void onMapStatusChangeStart(MapStatus mapStatus) {
+                float maxZoomLevel = mBaiduMap.getMaxZoomLevel();
+                float minZoomLevel = mBaiduMap.getMinZoomLevel();
+                if (currentZoomLevel >= maxZoomLevel) {
+                    currentZoomLevel = maxZoomLevel;
+                } else if (currentZoomLevel <= minZoomLevel) {
+                    currentZoomLevel = minZoomLevel;
+                }
+
+                if (currentZoomLevel == maxZoomLevel) {
+                    MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory
+                            .zoomTo(currentZoomLevel);
+                    mBaiduMap.animateMapStatus(mapStatusUpdate);//以动画方式更新地图状态，动画耗时 300 ms
+                    ivInButton.setEnabled(false);
+                } else if (currentZoomLevel == minZoomLevel) {
+                    MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory
+                            .zoomTo(currentZoomLevel);
+                    mBaiduMap.animateMapStatus(mapStatusUpdate);
+                    ivOutButton.setEnabled(false);
+                } else {
+                    if (!ivOutButton.isEnabled() || !ivInButton.isEnabled()) {
+                        ivInButton.setEnabled(true);
+                        ivOutButton.setEnabled(true);
+                    }
+                }
+            }
+
+            @Override
+            public void onMapStatusChange(MapStatus mapStatus) {
+
+            }
+
+            @Override
+            public void onMapStatusChangeFinish(MapStatus mapStatus) {
+
+            }
+        };
+        mBaiduMap.setOnMapStatusChangeListener(mapStatusChangeListener);
         // 开启定位图层
         mBaiduMap.setMyLocationEnabled(true);
         // 定位初始化
@@ -214,7 +280,7 @@ public class MainActivity extends BaseActivity {
     }
 
     /*
-    设设置定位SDK的定位方式
+    设置定位SDK的定位方式
      */
     private void initLocation() {
         LocationClientOption option = new LocationClientOption();
