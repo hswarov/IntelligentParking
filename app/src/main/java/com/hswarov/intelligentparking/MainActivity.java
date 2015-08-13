@@ -3,6 +3,7 @@ package com.hswarov.intelligentparking;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
@@ -34,6 +35,8 @@ public class MainActivity extends BaseActivity {
     //public MyLocationListenner myListener = new MyLocationListenner();
     private MyLocationConfiguration.LocationMode mCurrentMode;
     BitmapDescriptor mCurrentMarker;
+    float maxZoomLevel;
+    float minZoomLevel;
 
     MapView mMapView;
     BaiduMap mBaiduMap;
@@ -50,13 +53,17 @@ public class MainActivity extends BaseActivity {
     private LinearLayout llNavi;   //导航
     private LinearLayout llMine;   //我的
     private ImageView ivVoiceButton;
-    private ImageView ivInButton;
-    private ImageView ivOutButton;
+    private Button ivInButton;
+    private Button ivOutButton;
     private ImageView ivLoctionButton;
     private RelativeLayout rlLoc;
     private RelativeLayout rlUsercar;
+    private ImageView ivRoadCondition;
+    private ImageView ivMaplayers;
+    private ImageView ivStreetScape;
 
-
+    int numRoad = 0;
+    int numStreet = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,12 +88,16 @@ public class MainActivity extends BaseActivity {
         ivVoiceButton = (ImageView) findViewById(R.id.layout_search_tab_voice);
         rlLoc = (RelativeLayout) findViewById(R.id.main_loc_rl);
         rlUsercar = (RelativeLayout) findViewById(R.id.main_user_car);
-        ivInButton = (ImageView) findViewById(R.id.main_zoom_in);
-        ivOutButton = (ImageView) findViewById(R.id.main_zoom_out);
+        ivInButton = (Button) findViewById(R.id.main_zoom_in_btn);
+        ivOutButton = (Button) findViewById(R.id.main_zoom_out_btn);
         ivLoctionButton = (ImageView) findViewById(R.id.main_loc_iv);
+        ivRoadCondition = (ImageView) findViewById(R.id.main_road_condition_iv);
+        ivMaplayers = (ImageView) findViewById(R.id.main_maplayers_iv);
+        ivStreetScape = (ImageView) findViewById(R.id.main_street_scape_iv);
     }
 
     private void initListener() {
+
         llNearby.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,13 +151,13 @@ public class MainActivity extends BaseActivity {
         ivOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (currentZoomLevel > 4) {
+                currentZoomLevel = mBaiduMap.getMapStatus().zoom;
+                if (currentZoomLevel > minZoomLevel) {
                     mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomOut());
-                    ivOutButton.setEnabled(true);
+                    ivInButton.setEnabled(true);
                 } else {
-                    ivOutButton.setEnabled(false);
                     Toast.makeText(getApplicationContext(), "已缩至最小！", Toast.LENGTH_SHORT).show();
+                    ivOutButton.setEnabled(false);
                 }
                 L.i("ivOutButton点击");
             }
@@ -154,14 +165,45 @@ public class MainActivity extends BaseActivity {
         ivInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currentZoomLevel <= 18) {
+                currentZoomLevel = mBaiduMap.getMapStatus().zoom;
+                if (currentZoomLevel < maxZoomLevel) {
                     MapStatusUpdateFactory.zoomIn();
                     mBaiduMap.setMapStatus(MapStatusUpdateFactory.zoomIn());
-                    ivInButton.setEnabled(true);
+                    ivOutButton.setEnabled(true);
                 } else {
                     Toast.makeText(getApplicationContext(), "已放至最大！", Toast.LENGTH_SHORT).show();
+                    ivInButton.setEnabled(false);
                 }
                 L.i("ivInButton点击");
+            }
+        });
+        ivRoadCondition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int[] roadConArray = {R.drawable.main_icon_roadcondition_off,
+                        R.drawable.main_icon_roadcondition_on};
+                ivRoadCondition.setImageResource(roadConArray[++numRoad % 2]);
+                mBaiduMap.setTrafficEnabled(true);
+                if(numRoad%2 == 0)mBaiduMap.setTrafficEnabled(false);
+
+                L.i("ivRoadCondition点击");
+            }
+        });
+        ivMaplayers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                L.i("ivMaplayers点击");
+            }
+        });
+        ivStreetScape.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int[] streetScaArray = {R.drawable.main_map_icon_streetscape,
+                        R.drawable.main_map_icon_streetscape_selected};
+                ivStreetScape.setImageResource(streetScaArray[++numStreet % 2]);
+
+                L.i("ivStreetScape点击");
             }
         });
     }
@@ -216,7 +258,8 @@ public class MainActivity extends BaseActivity {
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(15.0f);//设置缩放级别
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapStatus(msu);
-        currentZoomLevel = mBaiduMap.getMapStatus().zoom; //当前缩放比例
+        maxZoomLevel = mBaiduMap.getMaxZoomLevel();
+        minZoomLevel = mBaiduMap.getMinZoomLevel();
             /*
             让用户手势缩放和按钮缩放可以同步
             并解决有时候地图放的过大而无法手势缩小的问题。
@@ -226,8 +269,7 @@ public class MainActivity extends BaseActivity {
         BaiduMap.OnMapStatusChangeListener mapStatusChangeListener = new BaiduMap.OnMapStatusChangeListener() {
             @Override
             public void onMapStatusChangeStart(MapStatus mapStatus) {
-                float maxZoomLevel = mBaiduMap.getMaxZoomLevel();
-                float minZoomLevel = mBaiduMap.getMinZoomLevel();
+                currentZoomLevel = mBaiduMap.getMapStatus().zoom; //当前缩放比例
                 if (currentZoomLevel >= maxZoomLevel) {
                     currentZoomLevel = maxZoomLevel;
                 } else if (currentZoomLevel <= minZoomLevel) {
