@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/tab_gray"
+              android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:src="@drawable/press_bg_search_back_selector"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/general_white_bg_shape"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/common_icon_searchbox_magnifier_new"/>
+
+        <com.hswarov.intelligentparking.widget.ClearEditText
+            android:id="@+id/search_tab_ce"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="@dimen/normal_edit_size"
+            android:hint="@string/search"
+            android:background="@null"
+            android:singleLine="true"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/search_tab_rl"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/search_tab_voice_iv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/presss_general_bg_selector"
+            android:scaleType="fitCenter"
+            android:src="@drawable/route_bus_btn_voice"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/search"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

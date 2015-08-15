@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/backgound_gray"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
+              android:orientation="vertical"
+              tools:context="com.hswarov.intelligentparking.activity.SearchActivity">
+    <include android:id="@+id/search_title_tab"
+             layout="@layout/search_tab_title"
+             android:layout_width="match_parent"
+             android:layout_height="60dp"
+        />
+
+</LinearLayout>

@@ -6,23 +6,28 @@
                 android:gravity="center">
 
     <ImageView
-        android:id="@+id/layout_search_tab_search_view"
+        android:id="@+id/layout_search_tab_search_view_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:scaleType="fitStart"
-        android:padding="5dp"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        android:paddingRight="0dp"
+        android:paddingEnd="0dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:src="@drawable/common_icon_searchbox_magnifier"/>
 
     <TextView
         android:id="@+id/layout_search_tab_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:layout_toEndOf="@+id/layout_search_tab_search_view"
+        android:paddingTop="12dp"
+        android:layout_toEndOf="@+id/layout_search_tab_search_view_iv"
         android:layout_toLeftOf="@+id/layout_search_tab_line"
-        android:layout_toRightOf="@+id/layout_search_tab_search_view"
+        android:layout_toRightOf="@+id/layout_search_tab_search_view_iv"
         android:layout_toStartOf="@+id/layout_search_tab_line"
         android:singleLine="true"
         android:text="@string/search_tab"
@@ -43,15 +48,12 @@
 
     <ImageView
         android:id="@+id/layout_search_tab_voice"
-        android:layout_width="wrap_content"
+        android:layout_width="45dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:paddingRight="10dp"
-        android:paddingEnd="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:scaleType="fitEnd"
-        android:src="@drawable/press_bg_search_tab_voice"/>
+        android:background="@drawable/presss_general_bg_selector"
+        android:src="@drawable/route_bus_btn_voice"/>
 
 </RelativeLayout>
