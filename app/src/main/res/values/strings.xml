@@ -33,5 +33,17 @@
     <!-- 搜索界面 -->
     <string name="search">搜索</string>
     <string name="title_activity_search">SearchActivity</string>
+    <string name="chezhu">车主招募</string>
+    <string name="youjiang">有奖骑车</string>
+    <string name="wangba">网吧</string>
+    <string name="xiyu">洗浴</string>
+    <string name="meishi">美食</string>
+    <string name="jingdian">景点</string>
+    <string name="jiudian">酒店</string>
+    <string name="chaoshi">超市</string>
+    <string name="yinghang">银行</string>
+    <string name="gongjiaozhan">公交站</string>
+    <string name="jiaouzhan">加油站</string>
+    <string name="gengduo">更多＞</string>
 
 </resources>

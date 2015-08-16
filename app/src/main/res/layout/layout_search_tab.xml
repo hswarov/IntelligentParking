@@ -53,7 +53,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:scaleType="fitEnd"
-        android:background="@drawable/presss_general_bg_selector"
+        android:background="@drawable/general_bg_selector"
         android:src="@drawable/route_bus_btn_voice"/>
 
 </RelativeLayout>

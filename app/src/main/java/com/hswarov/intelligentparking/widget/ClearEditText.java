@@ -26,11 +26,13 @@ public class ClearEditText extends EditText implements OnFocusChangeListener, Te
 
     public ClearEditText(Context context) {
         super(context);
+        init();
     }
 
     public ClearEditText(Context context, AttributeSet attrs) {
-        //这里构造方法也很重要，不加这个很多属性不能再XML里面定义
+        //这里构造方法也很重要，不ML里面定义
         super(context, attrs, android.R.attr.editTextStyle);
+        init();
     }
 
     public ClearEditText(Context context, AttributeSet attrs,
@@ -46,8 +48,8 @@ public class ClearEditText extends EditText implements OnFocusChangeListener, Te
             mClearDrawable = getResources().getDrawable(R.drawable.btn_icon_delete);
         }
         if (mClearDrawable != null) {
-            mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(),
-                    mClearDrawable.getIntrinsicHeight());
+            mClearDrawable.setBounds(0, 0, 30,
+                    30);
         }
         setClearIconVisible(false);
         setOnFocusChangeListener(this);
@@ -103,7 +105,6 @@ public class ClearEditText extends EditText implements OnFocusChangeListener, Te
 
     @Override
     public void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
-        super.onTextChanged(text, start, lengthBefore, lengthAfter);
         setClearIconVisible(text.length() > 0);
     }
 
@@ -143,6 +144,7 @@ public class ClearEditText extends EditText implements OnFocusChangeListener, Te
 
     /**
      * 晃动动画
+     *
      * @param counts 1s晃动多少下
      * @return Animation
      */
