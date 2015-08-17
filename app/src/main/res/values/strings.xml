@@ -45,5 +45,8 @@
     <string name="gongjiaozhan">公交站</string>
     <string name="jiaouzhan">加油站</string>
     <string name="gengduo">更多＞</string>
+    <string name="title_activity_nearby">NearbyActivity</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="title_activity_voice">VoiceActivity</string>
 
 </resources>
