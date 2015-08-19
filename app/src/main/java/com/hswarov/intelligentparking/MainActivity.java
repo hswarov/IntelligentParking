@@ -27,8 +27,8 @@ import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.UiSettings;
 import com.baidu.mapapi.model.LatLng;
-import com.hswarov.intelligentparking.activity.LoginActivity;
 import com.hswarov.intelligentparking.activity.SearchActivity;
+import com.hswarov.intelligentparking.activity.UserCenterActivity;
 import com.hswarov.intelligentparking.app.BaseActivity;
 import com.hswarov.intelligentparking.util.L;
 
@@ -303,7 +303,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void userCenter() {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        //Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        Intent intent = new Intent(MainActivity.this, UserCenterActivity.class);
         startActivity(intent);
     }
 

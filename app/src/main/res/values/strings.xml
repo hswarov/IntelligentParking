@@ -48,5 +48,26 @@
     <string name="title_activity_nearby">NearbyActivity</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="title_activity_voice">VoiceActivity</string>
+    <string name="title_activity_user_center">UserCenterActivity</string>
+
+    <!-- 用户中心界面 -->
+    <string name="username">智能停车场</string>
+    <string name="weather">24/21℃ 武汉</string>
+    <string name="kongqizhiliang">29 优</string>
+    <string name="zuji">足迹</string>
+    <string name="lixiab">离线下载包</string>
+    <string name="shoucang">收藏</string>
+    <string name="changyong">常用地址</string>
+    <string name="digndan">订单</string>
+    <string name="gongxian">贡献</string>
+    <string name="caifu">财富</string>
+    <string name="wodezhidahao">我的直达号</string>
+    <string name="ceju">测距</string>
+    <string name="shenbian">身边雷达</string>
+    <string name="huodongleida">活动专区</string>
+    <string name="bangzhu">帮助与反馈</string>
+    <string name="shezhi">设置</string>
+    <string name="tuichu">退出IP智能停车场</string>
+
 
 </resources>
