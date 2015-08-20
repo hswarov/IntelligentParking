@@ -64,6 +64,7 @@
 
         <activity
             android:name=".activity.LoginActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_login" >
         </activity>
         <activity
@@ -72,18 +73,22 @@
         </activity>
         <activity
             android:name=".activity.NearbyActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_nearby" >
         </activity>
         <activity
             android:name=".activity.NavigationActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_navigation" >
         </activity>
         <activity
             android:name=".activity.VoiceActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_voice" >
         </activity>
         <activity
             android:name=".activity.UserCenterActivity"
+            android:launchMode="singleTask"
             android:label="@string/title_activity_user_center" >
         </activity>
     </application>
