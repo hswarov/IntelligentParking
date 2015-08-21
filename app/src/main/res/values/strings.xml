@@ -69,5 +69,10 @@
     <string name="shezhi">设置</string>
     <string name="tuichu">退出IP智能停车场</string>
 
+    <!-- 退出窗口 -->
+    <string name="dialog_titlt">退出</string>
+    <string name="dialog_text">确定要退出IP智能停车？</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_determine">确定</string>
 
 </resources>

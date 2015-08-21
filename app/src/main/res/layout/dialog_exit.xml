@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:clickable="true"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/general_light_gray">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center_vertical"
+            android:text="@string/dialog_titlt"
+            android:textColor="@color/general_black"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.01dp"
+            android:background="@color/general_dark_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:gravity="center_vertical"
+            android:text="@string/dialog_text"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.01dp"
+            android:background="@color/general_dark_gray"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/general_bg_btn_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/dialog_cancel"
+            android:textColor="@color/general_black"/>
+
+        <View
+            android:layout_width="0.01dp"
+            android:layout_height="match_parent"
+            android:background="@color/general_dark_gray"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/general_bg_btn_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/dialog_determine"
+            android:textColor="@color/general_black"/>
+    </LinearLayout>
+
+</LinearLayout>
