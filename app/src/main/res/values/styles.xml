@@ -6,5 +6,12 @@
 
     </style>
 
+    <style name="MyDialog" parent="@style/Base.Animation.AppCompat.Dialog">
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
 
 </resources>

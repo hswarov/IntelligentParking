@@ -847,6 +847,7 @@
 
 
                 <RelativeLayout
+                    android:id="@+id/usercenter_exit_rl"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/general_item_selector"
