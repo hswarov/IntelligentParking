@@ -11,6 +11,7 @@ import android.widget.ScrollView;
 
 import com.hswarov.intelligentparking.MainActivity;
 import com.hswarov.intelligentparking.R;
+import com.hswarov.intelligentparking.app.AppManager;
 import com.hswarov.intelligentparking.app.BaseActivity;
 import com.hswarov.intelligentparking.widget.MyDialog;
 
@@ -61,6 +62,7 @@ public class UserCenterActivity extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
+                AppManager.getAppManager().AppExit();
             }
         });
         builder.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
