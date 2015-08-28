@@ -75,4 +75,7 @@
     <string name="dialog_cancel">取消</string>
     <string name="dialog_determine">确定</string>
 
+    <!-- 附近界面 -->
+    <string name="nearby_search_hint">在我的位置附近搜索</string>
+
 </resources>

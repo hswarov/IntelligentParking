@@ -7,8 +7,8 @@
     <color name="general_light_gray">#DEDEDE</color>
     <color name="general_orange">#EE6911</color>
     <color name="general_blue">#436EEE</color>
-    <color name="backgound_gray">#DCDCDC</color>
-    <color name="backgound_light_gray">#F0F0F0</color>
+    <color name="background_gray">#DCDCDC</color>
+    <color name="background_light_gray">#F0F0F0</color>
     <color name="general_white">#FFFFFF</color>
     <color name="tab_gray">#F7F7F7</color>
     <color name="grid_item_pressed">#F0F8FF</color>
