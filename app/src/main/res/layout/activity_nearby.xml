@@ -17,10 +17,14 @@
     </LinearLayout>
 
     <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
-        android:id="+id/nearby_view_pager"
+        android:id="@+id/nearby_view_pager"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         />
+    <com.viewpagerindicator.TitlePageIndicator
+        android:id="@+id/nearby_indicator"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent" />
 
 
 </RelativeLayout>
