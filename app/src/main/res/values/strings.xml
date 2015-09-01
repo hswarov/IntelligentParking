@@ -77,5 +77,11 @@
 
     <!-- 附近界面 -->
     <string name="nearby_search_hint">在我的位置附近搜索</string>
+    <string name="title_activity_customer_service">CustomerServiceActivity</string>
+
+    <!-- 客服中心界面 -->
+    <string name="customer_service_title">客户服务中心</string>
+    <string name="customer_service_send">发送</string>
+    <string name="customer_service_name">IP小秘书</string>
 
 </resources>

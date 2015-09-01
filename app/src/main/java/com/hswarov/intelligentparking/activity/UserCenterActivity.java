@@ -46,12 +46,29 @@ public class UserCenterActivity extends BaseActivity {
                 backToMainActivity();
             }
         });
+        ibMsgw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toCustomerService();
+            }
+        });
+        ibMsgb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toCustomerService();
+            }
+        });
         rlExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertExitDialog();
             }
         });
+    }
+
+    private void toCustomerService() {
+        Intent intent = new Intent(UserCenterActivity.this, CustomerServiceActivity.class);
+        startActivity(intent);
     }
 
     private void alertExitDialog() {

@@ -925,7 +925,6 @@
             android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-
             android:background="@drawable/usercenter_ib_white_selector"
             android:clickable="true"
             />
@@ -936,7 +935,6 @@
             android:layout_height="45dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-
             android:background="@drawable/usercenter_ib_black_selector"
             android:clickable="true"
             android:visibility="gone"
@@ -948,7 +946,6 @@
             android:layout_height="45dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-
             android:background="@drawable/usercenter_ib_msg_white_selector"
             android:clickable="true"/>
 
@@ -958,7 +955,6 @@
             android:layout_height="45dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-
             android:background="@drawable/usercenter_ib_msg_blackt_selector"
             android:clickable="true"
             android:visibility="gone"/>
