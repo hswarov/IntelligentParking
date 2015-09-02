@@ -7,6 +7,7 @@
     <color name="general_light_gray">#DEDEDE</color>
     <color name="general_orange">#EE6911</color>
     <color name="general_blue">#436EEE</color>
+    <color name="time_backgroud">#F2F2F2</color>
     <color name="background_gray">#DCDCDC</color>
     <color name="background_light_gray">#F0F0F0</color>
     <color name="general_white">#FFFFFF</color>

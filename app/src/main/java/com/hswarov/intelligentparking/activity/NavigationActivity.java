@@ -1,13 +1,13 @@
 package com.hswarov.intelligentparking.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hswarov.intelligentparking.R;
+import com.hswarov.intelligentparking.app.BaseActivity;
 
-public class NavigationActivity extends AppCompatActivity {
+public class NavigationActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

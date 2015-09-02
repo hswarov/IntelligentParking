@@ -26,17 +26,9 @@
 
     </RelativeLayout>
 
-    <include
-        layout="@layout/include_horizontal_separator_black_line"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_below="@+id/customer_service_rl"/>
 
-    <include
-        layout="@layout/include_horizontal_separator_black_line"
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_above="@+id/customer_service_ll"/>
+
+
 
     <LinearLayout
         android:id="@+id/customer_service_ll"
@@ -97,8 +89,20 @@
         android:layout_below="@id/customer_service_rl"
         android:divider="@null"
         android:dividerHeight="5dp"
+        android:fastScrollEnabled="true"
+        android:scrollbarStyle="insideInset"
+        android:transcriptMode="normal"
         android:layout_above="@id/customer_service_ll"/>
 
-
+    <include
+        layout="@layout/include_horizontal_separator_black_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/customer_service_rl"/>
+    <include
+        layout="@layout/include_horizontal_separator_black_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/customer_service_ll"/>
 
 </RelativeLayout>
